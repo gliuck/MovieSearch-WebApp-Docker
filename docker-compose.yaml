@@ -1,0 +1,48 @@
+#versione del docker-compose
+version: '4' 
+#Per ciascun servizio si specifica dove prendere le immagini
+services:
+#Definisco il servizio server che sarò costruito con l'immagine scritta nel dockerfile
+  server:
+    #installo l'immagine scritta nel dockerfile
+    build: . 
+    container_name: MovieSearch
+    ports:
+    - 3000:3000
+    command: node server.js
+    #servizio connesso alla rete MovieSearch_network
+    networks: 
+      - MovieSearch_network
+      
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/Films
+    networks:
+      - MovieSearch_network
+        
+  mongo-express:
+    image: mongo-express:latest
+    restart: always 
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    networks: 
+      - MovieSearch_network
+      
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  MovieSearch_network:
+    driver: bridge
+   
