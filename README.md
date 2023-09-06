@@ -25,7 +25,7 @@ The frontend of the application is developed in JavaScript, HTML, and CSS, allow
 Overall, the project provides a web interface for searching movies based on the desired year and genre, using a MongoDB database as the data source. It consists primarily of three main components: a non-relational MongoDB database, the use of the graphical interface obtained through Mongo-Express, and Node.js, which manages communication with the database and the display of dynamic content on the index.html page.
 
 <p align="center">
-  <img src="https://github.com/gliuck/MovieSearch-WebApp-Docker/assets/48186637/ed064c54-722f-46a1-a710-4fe244240df5.jpg" width="300">
+  <img src="https://github.com/gliuck/MovieSearch-WebApp-Docker/assets/48186637/ed064c54-722f-46a1-a710-4fe244240df5.jpg" width="500">
 </p>
 
 ## 2. Database
